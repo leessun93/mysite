@@ -51,6 +51,11 @@ public class UserController extends HttpServlet {
 			WebUtil.forward(request, response, "WEB-INF/views/user/joinOk.jsp");//포워드는 내부 직원,에게 모든걸 준다
 			
 			
+		}else if("loginForm".equals(act)) {
+			WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
+			
+		}else if("login".equals(act)) {
+			
 		}
 		
 		

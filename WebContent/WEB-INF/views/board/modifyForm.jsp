@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="/mysite/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="wrap">
@@ -43,94 +43,90 @@
 
 		<div id="container" class="clearfix">
 			<div id="aside">
-				<h2>회원</h2>
+				<h2>게시판</h2>
 				<ul>
-					<li>회원정보</li>
-					<li>로그인</li>
-					<li>회원가입</li>
+					<li><a href="">일반게시판</a></li>
+					<li><a href="">댓글게시판</a></li>
 				</ul>
 			</div>
 			<!-- //aside -->
 
 			<div id="content">
-			
+
 				<div id="content-head">
-					<h3>회원가입</h3>
+					<h3>게시판</h3>
 					<div id="location">
 						<ul>
 							<li>홈</li>
-							<li>회원</li>
-							<li class="last">회원가입</li>
+							<li>게시판</li>
+							<li class="last">일반게시판</li>
 						</ul>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
 	
-				<div id="user">
-					<div id="joinForm">
-						<form action="/mysite/user" method="get">
-	
-							<!-- 아이디 -->
+				<div id="board">
+					<div id="modifyForm">
+						<form action="#" method="get">
+							<!-- 작성자 -->
 							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> 
-								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="">중복체크</button>
-							</div>
-	
-							<!-- 비밀번호 -->
-							<div class="form-group">
-								<label class="form-text" for="input-pass">패스워드</label> 
-								<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요"	>
-							</div>
-	
-							<!-- 이름 -->
-							<div class="form-group">
-								<label class="form-text" for="input-name">이름</label> 
-								<input type="text" id="input-name" name="name" value="" placeholder="이름을 입력하세요">
-							</div>
-	
-							<!-- //나이 -->
-							<div class="form-group">
-								<span class="form-text">성별</span> 
-								
-								<label for="rdo-male">남</label> 
-								<input type="radio" id="rdo-male" name="gender" value="male" > 
-								
-								<label for="rdo-female">여</label> 
-								<input type="radio" id="rdo-female" name="gender" value="female" > 
-	
-							</div>
-	
-							<!-- 약관동의 -->
-							<div class="form-group">
-								<span class="form-text">약관동의</span> 
-								
-								<input type="checkbox" id="chk-agree" value="" name="">
-								<label for="chk-agree">서비스 약관에 동의합니다.</label> 
+								<span class="form-text">작성자</span>
+								<span class="form-value">정우성</span>
 							</div>
 							
-							<!-- 버튼영역 -->
-							<div class="button-area">
-								<button type="submit" id="btn-submit">회원가입</button>
+							<!-- 조회수 -->
+							<div class="form-group">
+								<span class="form-text">조회수</span>
+								<span class="form-value">123</span>
 							</div>
 							
-							<input type="text" name="action" value="join"> 
+							<!-- 작성일 -->
+							<div class="form-group">
+								<span class="form-text">작성일</span>
+								<span class="form-value">2020-03-02</span>
+							</div>
+							
+							<!-- 제목 -->
+							<div class="form-group">
+								<label class="form-text" for="txt-title">제목</label>
+								<input type="text" id="txt-title" name="" value="여기에는 글제목이 출력됩니다.">
+							</div>
+						
+							
+						
+							<!-- 내용 -->
+							<div class="form-group">
+								<textarea id="txt-content">여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.
+	여기에는 본문내용이 출력됩니다.</textarea>
+							</div>
+							
+							<a id="btn_cancel" href="">취소</a>
+							<button id="btn_modify" type="submit" >수정</button>
+							
 						</form>
+						<!-- //form -->
 					</div>
-					<!-- //joinForm -->
+					<!-- //modifyForm -->
 				</div>
-				<!-- //user -->
+				<!-- //board -->
 			</div>
 			<!-- //content  -->
+
 		</div>
 		<!-- //container  -->
-		
+
+
 		<div id="footer">
 			Copyright ⓒ 2020 황일영. All right reserved
 		</div>
 		<!-- //footer -->
-
 	</div>
 	<!-- //wrap -->
 

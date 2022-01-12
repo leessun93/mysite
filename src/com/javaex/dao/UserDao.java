@@ -87,5 +87,51 @@ public class UserDao {
 
 			return count;
 		}
+
 		
+		
+		public UserVo getUser(String id, String password) {
+			
+			UserVo userVo = null;
+			getConnection();
+			
+			
+			try {
+				
+			
+				String query = "";
+				query += " select  no, ";
+				query += "         name ";
+				query += " from users ";
+				query += " where id = ? ";
+				query += " and password = ? ";
+				
+				
+				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, id);
+				pstmt.setString(2, password);
+				
+				
+				rs = pstmt.executeQuery();
+			
+				while(rs.next()) {
+					int no = rs.getInt("no");
+					String name = rs.getString("name");
+					
+					userVo = new UserVo();
+					userVo.setNo(no);
+					userVo.setName(name);
+				}
+				System.out.println("로긴저장완료");
+				
+			}catch (SQLException e) {
+				System.out.println("error:" + e);
+			} 
+				
+			close();
+			return userVo;
+			
+			
+		}
 }

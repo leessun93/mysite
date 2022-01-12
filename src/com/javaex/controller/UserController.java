@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.javaex.dao.UserDao;
 import com.javaex.util.WebUtil;
@@ -55,7 +56,39 @@ public class UserController extends HttpServlet {
 			WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
 			
 		}else if("login".equals(act)) {
+		
+			String id = request.getParameter("id");
+			String password = request.getParameter("password");
 			
+			
+			UserDao userDao = new UserDao();
+			UserVo authVo = userDao.getUser(id, password);//정상로그인시 아디패스워드를 authVo에 넣음
+	
+			if(authVo == null) { //로그인 실패시
+			
+				System.out.println("로그인 실패");
+				
+				WebUtil.redirect(request, response, "/mysite/user?action=loginForm&result=fail");//이거 오늘 숙제
+				
+				
+			}else {//로그인 성공시
+				System.out.println("로그인 성공");
+				
+				HttpSession session = request.getSession(); //세션 영역에 리퀘스트로 값 가져오기를 하겠다            인터넷이랑 톰켓이 주고받는 쇼핑카트
+				session.setAttribute("authUser", authVo); //세션에 어트리뷰트(개발자의 정보 저장공간에)를 넣겠다		안에 개인정보를 담다
+				
+				WebUtil.redirect(request, response, "/mysite/main");
+			}
+			
+			
+		
+		}else if("logout".equals(act)) {
+			System.out.println("로그아웃");
+			
+			HttpSession session = request.getSession();															//그리고 이건 그 쇼핑카트안에서 지운다
+			session.removeAttribute("authUser");
+			session.invalidate();                        //로그인 전으로 되돌리겠다
+			WebUtil.redirect(request, response, "/mysite/main");
 		}
 		
 		

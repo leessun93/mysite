@@ -89,6 +89,35 @@ public class UserController extends HttpServlet {
 			session.removeAttribute("authUser");
 			session.invalidate();                        //로그인 전으로 되돌리겠다
 			WebUtil.redirect(request, response, "/mysite/main");
+		}else if("modifyForm".equals(act)) {
+			System.out.println("모디폼으로 진입 성공");	
+			
+			
+			
+			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+			
+			
+		}else if("modify".equals(act)) {
+			System.out.println("모디파이 도킹 성공");
+			String id = request.getParameter("id");
+			String password = request.getParameter("password");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			UserVo userVo = new UserVo(no, id, password, name, gender);
+			UserDao userDao = new UserDao();
+			
+			userDao.userModify(userVo);
+			UserVo authVo = new UserVo();
+			authVo.setNo(userVo.getNo());
+			authVo.setName(userVo.getName());
+			WebUtil.redirect(request, response, "/mysite/main");
+			
+			HttpSession session = request.getSession(); //지금 세션 값을 줘
+			session.setAttribute("authUser", authVo);//호출할 이름, 넣을 변수
+			
+			System.out.println("정보수정 완료");
 		}
 		
 		

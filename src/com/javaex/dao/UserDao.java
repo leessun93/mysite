@@ -134,4 +134,40 @@ public class UserDao {
 			
 			
 		}
+		
+		 
+		
+		public int userModify(UserVo vo) {
+			int count=0;
+			
+			getConnection();
+			
+			try {
+				//쿼리문 준비
+				String query = "";
+				query += " update users ";
+				query += " set password = ?, ";
+				query += "     name = ?, ";
+				query += "     gender = ? ";
+				query += " where id = ? ";
+				query += " and no = ? ";
+				
+				//쿼리로 만들기
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, vo.getPassword());
+				pstmt.setString(2, vo.getName());
+				pstmt.setString(3, vo.getGender());
+				pstmt.setString(4, vo.getId());
+				pstmt.setInt(5, vo.getNo());
+				
+				count = pstmt.executeUpdate();
+					
+			}catch (SQLException e) {
+				System.out.println("error:" + e);
+			}
+			
+			close();
+			return count;
+		}
 }

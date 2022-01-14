@@ -154,10 +154,10 @@ public class GuestbookDao {
 	         query += " delete guestbook ";
 	         query += " where no = ? ";
 	         query += " and password= ? ";
-	         // System.out.println(query);
-
+	         
+	         
 	         pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-
+	         
 	         pstmt.setInt(1, vo.getNo()); // ?(물음표) 중 1번째, 순서중요
 	         pstmt.setString(2, vo.getPassword());
 

@@ -19,17 +19,12 @@
 <body>
 		<div id="wrap">
 
-		<!-- 헤더가 있던부분 -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+	
 		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
-		<!-- /헤더가 있던부분 -->
-
-	    <!-- 네비부분 -->
 		
+		<div id="header" class="clearfix">
 		
-		
-		<!-- //nav -->
-
+		</div>
 		
 		<div id="container" class="clearfix">
 			<!-- aside 없음 -->

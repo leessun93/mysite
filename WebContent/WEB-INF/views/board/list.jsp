@@ -1,44 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+            <!-- 이걸 써야 jstl 쓸수있음 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/mysite/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mystie/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="/mysite/assets/css/board.css" rel="stylesheet" type="text/css">
+
 </head>
+
+
 <body>
 	<div id="wrap">
-
+		
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+		
 		<div id="header" class="clearfix">
-			<h1>
-				<a href="/mysite/main">MySite</a>
-			</h1>
-
-			<!-- 
-			<ul>
-				<li>황일영 님 안녕하세요^^</li>
-				<li><a href="" class="btn_s">로그아웃</a></li>
-				<li><a href="" class="btn_s">회원정보수정</a></li>
-			</ul>
-			-->	
-			<ul>
-				<li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
-				<li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
-			</ul>
 			
 		</div>
 		<!-- //header -->
 		
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
+		
 		<!-- //nav -->
 
 		<div id="container" class="clearfix">
@@ -88,11 +74,11 @@
 							<tbody>
 								<tr>
 									<td>123</td>
-									<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
+									<td class="text-left"><a href="/mysite/board?action=read">게시판 게시글입니다.</a></td>
 									<td>정우성</td>
 									<td>1232</td>
 									<td>2020-12-23</td>
-									<td><a href="">[삭제]</a></td>
+									<td><a href="/mysite/board?action=delete">[삭제]</a></td>
 								</tr>
 								<tr>
 									<td>123</td>
@@ -148,7 +134,7 @@
 							
 							<div class="clear"></div>
 						</div>
-						<a id="btn_write" href="">글쓰기</a>
+						<a id="btn_write" href="/mysite/board?action=writeForm">글쓰기</a>
 					
 					</div>
 					<!-- //list -->
@@ -162,11 +148,13 @@
 		
 
 		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
+			Copyright ⓒ 2020 이선흠. All right reserved
 		</div>
 		<!-- //footer -->
 	</div>
 	<!-- //wrap -->
 
 </body>
+
+
 </html>

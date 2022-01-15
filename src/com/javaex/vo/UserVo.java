@@ -8,7 +8,6 @@ public class UserVo {
 	private String name;
 	private String gender;
 	
-	
 	public UserVo() {
 		
 	}
@@ -31,6 +30,7 @@ public class UserVo {
 		this.name = name;
 		this.gender = gender;
 	}
+	
 	
 	
 	public int getNo() {

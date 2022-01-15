@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.javaex.dao.BoardDao;
 import com.javaex.dao.UserDao;
 import com.javaex.util.WebUtil;
+import com.javaex.vo.BoardVo;
 import com.javaex.vo.UserVo;
 
 
@@ -119,7 +122,6 @@ public class UserController extends HttpServlet {
 			
 			System.out.println("정보수정 완료");
 		}
-		
 		
 		
 		

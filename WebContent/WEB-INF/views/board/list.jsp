@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import="com.javaex.vo.BoardVo" %>    
             <!-- 이걸 써야 jstl 쓸수있음 -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +76,7 @@
 									<td>123</td>
 									<td class="text-left"><a href="/mysite/board?action=read">게시판 게시글입니다.</a></td>
 									<td>정우성</td>
-									<td>1232</td>
+									<td>${vo.hit}</td>
 									<td>2020-12-23</td>
 									<td><a href="/mysite/board?action=delete">[삭제]</a></td>
 								</tr>

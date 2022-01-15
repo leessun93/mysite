@@ -17,8 +17,7 @@
 						<li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
 					</ul>
 				</c:when>	
-				<c:otherwise>
-					<!--로그인 성공-->
+				<c:otherwise>	
 					<ul>
 						<li>${authUser.name} 님 안녕하세요^^</li>
 						<li><a href="/mysite/user?action=logout" class="btn_s">로그아웃</a></li>

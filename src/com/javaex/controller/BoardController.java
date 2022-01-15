@@ -1,13 +1,16 @@
 package com.javaex.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javaex.dao.BoardDao;
 import com.javaex.util.WebUtil;
+import com.javaex.vo.BoardVo;
 
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
@@ -64,6 +67,14 @@ public class BoardController extends HttpServlet {
 			
 		}else if("delete".equals(act)) {
 			System.out.println("딜리트 후 리다이렉트 예정");
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			BoardDao boardDao = new BoardDao();
+			
+			
+			boardDao.boardDelete(id);
+			
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
 			

@@ -131,7 +131,7 @@ public class BoardDao {
 				
 				count = pstmt.executeUpdate(); // 쿼리문 실행
 
-			
+				System.out.println("모디파이 요까지 했네요잉");
 			} catch (SQLException e) {
 				System.out.println("error:" + e);
 			}

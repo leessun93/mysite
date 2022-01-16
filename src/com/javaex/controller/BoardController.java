@@ -53,7 +53,11 @@ public class BoardController extends HttpServlet {
 		}else if("modifyForm".equals(act)) {
 			//리드--> 모디파이폼
 			System.out.println("모디파이폼 도킹");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
 
+			BoardVo boardVo = new BoardDao().getBoardVo(no);
+			request.setAttribute("boardVo", boardVo);
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/board/modifyForm.jsp");
 			
@@ -62,8 +66,9 @@ public class BoardController extends HttpServlet {
 		}else if("modify".equals(act)) {
 			//모디파이폼--> 수정
 			System.out.println("모디파이후 리다이렉트예정");
+			request.setCharacterEncoding("UTF-8");
 			
-			int no = Integer.parseInt(request.getParameter("no"));
+			int no = Integer.parseInt(request.getParameter("id"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
@@ -86,15 +91,7 @@ public class BoardController extends HttpServlet {
 			//리스트 글쓰기
 			System.out.println("롸이트폼 도킹");
 			
-			int no = Integer.parseInt(request.getParameter("no"));
-
-			BoardVo boardVo = new BoardDao().getBoardVo(no);
-			request.setAttribute("boardVo", boardVo);
-			
 			WebUtil.forward(request, response, "/WEB-INF/views/board/writeForm.jsp");
-		
-		
-		
 		
 		}else if("boardWrite".equals(act)) {
 			System.out.println("보드 롸이트후 리스트로 리다이렉트 예정");
@@ -137,12 +134,6 @@ public class BoardController extends HttpServlet {
 			
 			
 		}
-	
-		
-	
-		
-
-		
 		
 		
 		

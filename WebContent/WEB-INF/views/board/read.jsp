@@ -90,8 +90,13 @@
 								${requestScope.boardVo.content}
 								</span>
 							</div>
-							
-							<a id="btn_modify" href="/mysite/board?action=modifyForm&no=${requestScope.boardVo.no}">수정</a>
+								<c:choose>
+									<c:when test="${boardVo.userNo == authUser.no}">
+										<a id="btn_modify" href="/mysite/board?action=modifyForm&no=${requestScope.boardVo.no}">수정</a>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose>
 							<a id="btn_modify" href="/mysite/board?action=list">목록</a>
 							
 						</form>

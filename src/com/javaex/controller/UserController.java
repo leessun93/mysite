@@ -27,6 +27,9 @@ public class UserController extends HttpServlet {
 	
 	System.out.println("user");
 	String act = request.getParameter("action");
+	request.setCharacterEncoding("UTF-8");
+	
+	
 	
 		if("joinForm".equals(act)) {
 			System.out.println("user > joinfrom");
@@ -62,28 +65,9 @@ public class UserController extends HttpServlet {
 		
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
-			
-			
+	
 			UserDao userDao = new UserDao();
 			UserVo authVo = userDao.getUser(id, password);//정상로그인시 아디패스워드를 authVo에 넣음
-
-			
-			if(authVo == null) {
-				System.out.println("로그인 실패");
-				WebUtil.redirect(request, response, "/mysite/user?action=loginForm&result=fail");
-				
-			} else {
-				System.out.println("로그인 성공");
-				HttpSession session = request.getSession(); //지금 세션 값을 줘
-				session.setAttribute("authUser", authVo);//호출할 이름, 넣을 변수
-				
-				WebUtil.redirect(request, response, "/mysite/main");
-				
-			}
-			
-			
-			
-			
 			
 			
 			
@@ -116,9 +100,17 @@ public class UserController extends HttpServlet {
 		}else if("modifyForm".equals(act)) {
 			System.out.println("모디폼으로 진입 성공");	
 			
-			
+			HttpSession session = request.getSession();
+			int no = ((UserVo)session.getAttribute("authUser")).getNo();
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+			
+			UserDao userDao = new UserDao();
+			UserVo userVo = userDao.getUser(no);	
+			
+			request.setAttribute("userVo", userVo);
+			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+			
 			
 			
 		}else if("modify".equals(act)) {

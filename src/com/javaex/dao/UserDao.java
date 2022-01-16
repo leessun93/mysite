@@ -135,6 +135,47 @@ public class UserDao {
 			
 		}
 		
+		public UserVo getUser(int no) {
+			UserVo userVo = null;
+
+			getConnection();
+
+			try {
+
+				// 3. SQL문 준비 / 바인딩 / 실행
+				String query = ""; // 쿼리문 문자열만들기, ? 주의
+				query += " select no, id, password, name, gender ";
+				query += " from users ";
+				query += " where no = ? ";
+
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, no);
+
+				rs = pstmt.executeQuery();
+
+				// 4.결과처리
+				while (rs.next()) {
+					int rNo = rs.getInt("no");
+					String id = rs.getString("id");
+					String password = rs.getString("password");
+					String name = rs.getString("name");
+					String gender = rs.getNString("gender");
+
+					userVo = new UserVo(rNo, id, password, name, gender);
+				}
+
+			} catch (SQLException e) {
+				System.out.println("error:" + e);
+			}
+
+			close();
+
+			return userVo;
+		}
+		
+		
+		
+		
 		 
 		
 		public int userModify(UserVo vo) {

@@ -66,7 +66,28 @@ public class UserController extends HttpServlet {
 			
 			UserDao userDao = new UserDao();
 			UserVo authVo = userDao.getUser(id, password);//정상로그인시 아디패스워드를 authVo에 넣음
-	
+
+			
+			if(authVo == null) {
+				System.out.println("로그인 실패");
+				WebUtil.redirect(request, response, "/mysite/user?action=loginForm&result=fail");
+				
+			} else {
+				System.out.println("로그인 성공");
+				HttpSession session = request.getSession(); //지금 세션 값을 줘
+				session.setAttribute("authUser", authVo);//호출할 이름, 넣을 변수
+				
+				WebUtil.redirect(request, response, "/mysite/main");
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
 			if(authVo == null) { //로그인 실패시
 			
 				System.out.println("로그인 실패");
